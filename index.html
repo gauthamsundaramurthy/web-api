@@ -4,54 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Page Visibility</title>
 </head>
 <body>
-  Open the console to view your battery Status !!
+  
+  <video id="videoElement"  controls>
+    <source src="./sample.mp4" type="video/mp4">
+    <source src="./sample.mp4" type="video/ogg">
+    Your browser does not support the video tag.
+  </video>
   <script>
-   
-   navigator.getBattery().then(function(battery) {
-    function updateAllBatteryInfo(){
-      updateChargeInfo();
-      updateLevelInfo();
-      updateChargingInfo();
-      updateDischargingInfo();
+    var hidden, visibilityChange; 
+    if (typeof document.hidden !== "undefined") {
+      hidden = "hidden";
+      visibilityChange = "visibilitychange";
+    } else if (typeof document.msHidden !== "undefined") {
+      hidden = "msHidden";
+      visibilityChange = "msvisibilitychange";
+    } else if (typeof document.webkitHidden !== "undefined") {
+      hidden = "webkitHidden";
+      visibilityChange = "webkitvisibilitychange";
     }
-    updateAllBatteryInfo();
-  
-    battery.addEventListener('chargingchange', function(){
-      updateChargeInfo();
-    });
-    function updateChargeInfo(){
-      console.log("Battery charging? "
-                  + (battery.charging ? "Yes" : "No"));
+
+    var videoElement = document.getElementById("videoElement");
+
+    function handleVisibilityChange() {
+      if (document[hidden]) {
+        videoElement.pause();
+      } else {
+        videoElement.play();
+      }
     }
-  
-    battery.addEventListener('levelchange', function(){
-      updateLevelInfo();
-    });
-    function updateLevelInfo(){
-      console.log("Battery level: "
-                  + battery.level * 100 + "%");
+
+    if (typeof document.addEventListener === "undefined" || hidden === undefined) {
+      console.log("This demo requires a browser, such as Google Chrome or Firefox, that supports the Page Visibility API.");
+    } else {
+      document.addEventListener(visibilityChange, handleVisibilityChange, false);
+        
+      videoElement.addEventListener("pause", function(){
+        document.title = 'Paused';
+      }, false);
+        
+      videoElement.addEventListener("play", function(){
+        document.title = 'Playing'; 
+      }, false);
     }
-  
-    battery.addEventListener('chargingtimechange', function(){
-      updateChargingInfo();
-    });
-    function updateChargingInfo(){
-      console.log("Battery charging time: "
-                   + battery.chargingTime + " seconds");
-    }
-  
-    battery.addEventListener('dischargingtimechange', function(){
-      updateDischargingInfo();
-    });
-    function updateDischargingInfo(){
-      console.log("Battery discharging time: "
-                   + battery.dischargingTime + " seconds");
-    }
-  
-  });
   </script>
 </body>
 </html>
