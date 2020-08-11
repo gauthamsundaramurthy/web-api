@@ -7,47 +7,26 @@
   <title>Page Visibility</title>
 </head>
 <body>
-  
   <video id="videoElement"  controls>
     <source src="./sample.mp4" type="video/mp4">
     <source src="./sample.mp4" type="video/ogg">
     Your browser does not support the video tag.
   </video>
   <script>
-    var hidden, visibilityChange; 
-    if (typeof document.hidden !== "undefined") {
-      hidden = "hidden";
-      visibilityChange = "visibilitychange";
-    } else if (typeof document.msHidden !== "undefined") {
-      hidden = "msHidden";
-      visibilityChange = "msvisibilitychange";
-    } else if (typeof document.webkitHidden !== "undefined") {
-      hidden = "webkitHidden";
-      visibilityChange = "webkitvisibilitychange";
-    }
-
-    var videoElement = document.getElementById("videoElement");
-
-    function handleVisibilityChange() {
-      if (document[hidden]) {
-        videoElement.pause();
-      } else {
-        videoElement.play();
+    document.addEventListener("keypress", function(e) {
+      if (e.keyCode === 13) {
+        toggleFullScreen();
       }
-    }
-
-    if (typeof document.addEventListener === "undefined" || hidden === undefined) {
-      console.log("This demo requires a browser, such as Google Chrome or Firefox, that supports the Page Visibility API.");
-    } else {
-      document.addEventListener(visibilityChange, handleVisibilityChange, false);
-        
-      videoElement.addEventListener("pause", function(){
-        document.title = 'Paused';
-      }, false);
-        
-      videoElement.addEventListener("play", function(){
-        document.title = 'Playing'; 
-      }, false);
+    }, false);
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        var elem = document.getElementById("videoElement");
+        elem.requestFullscreen();
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen(); 
+        }
+      }
     }
   </script>
 </body>
