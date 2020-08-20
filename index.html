@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn"> Trigger Notification </button>
+    <script>
+        btn.addEventListener('click', function() {
+            let promise = Notification.requestPermission();
+            promise.then(data => {
+                let notify = new Notification('Web Notification API',{
+                    body: 'Learn web notification API',
+                })
+                notify.onclick = () => alert('Click event triggered.')
+                notify.onclose = () => alert('Closing the notification')
+            })
+        })
+    </script>
+</body>
+</html>
