@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #container {
+            height: 250px;
+            overflow-y: auto;
+        }
+        #box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+            Growth and standardization
+            During the period of Internet Explorer dominance in the early 2000s, client-side scripting was stagnant. This started to change in 2004, when the successor of Netscape, Mozilla, released the Firefox browser. Firefox was well-received by many, taking significant market share from Internet Explorer.[19]
+            
+            In 2005, Mozilla joined ECMA International, and work started on the ECMAScript for XML (E4X) standard. This led to Mozilla working jointly with Macromedia (later acquired by Adobe Systems), who were implementing E4X in their ActionScript 3 language, which was based on an ECMAScript 4 draft. The goal became standardizing ActionScript 3 as the new ECMAScript 4. To this end, Adobe Systems released the Tamarin implementation as an open source project. However, Tamarin and ActionScript 3 were too different from established client-side scripting, and without cooperation from Microsoft, ECMAScript 4 never reached fruition.
+            
+            Meanwhile, very important developments were occurring in open source communities not affiliated with ECMA work. In 2005, Jesse James Garrett released a white paper in which he coined the term Ajax and described a set of technologies, of which JavaScript was the backbone, to create web applications where data can be loaded in the background, avoiding the need for full page reloads. This sparked a renaissance period of JavaScript, spearheaded by open source libraries and the communities that formed around them. Many new libraries were created, including jQuery, Prototype, Dojo Toolkit, and MooTools.
+            
+            Google debuted its Chrome browser in 2008, with the V8 JavaScript engine that was faster than its competition.[20][21] The key innovation was just-in-time compilation (JIT),[22] so other browser vendors needed to overhaul their engines for JIT.[23]
+            
+            In July 2008, these disparate parties came together for a conference in Oslo. This led to the eventual agreement in early 2009 to combine all relevant work and drive the language forward. The result was the ECMAScript 5 standard, released in December 2009.
+            
+            Reaching maturity
+            Ambitious work on the language continued for several years, culminating in an extensive collection of additions and refinements being formalized with the publication of ECMAScript 6 in 2015.[24]
+            
+            From 2016 to 2019, a new version of the ECMAScript standard was published each year, but the scope of changes was much smaller than the 5th or 6th editions. Thus JavaScript can now be considered a mature language that has largely settled down.
+            
+            The current JavaScript ecosystem has many libraries and frameworks, established programming practices, and increased usage of JavaScript outside of web browsers. Plus, with the rise of single-page applications and other JavaScript-heavy websites, a number of transpilers have been created to aid the development process.[25]
+            
+            Trademark
+            "JavaScript" is a trademark of Oracle Corporation in the United States.[26] It is used under license for technology invented and implemented by Netscape Communications and other parties.[27]
+            
+            Website client-side usage
+            JavaScript is the dominant client-side scripting language of the Web, with 95% of websites using it for this purpose.[9] Scripts are embedded in or included from HTML documents and interact with the DOM. All major web browsers have a built-in JavaScript engine that executes the code on the user's device.
+            
+            Examples of scripted behavior
+            See also: Dynamic HTML and Ajax (programming)
+            Loading new page content without reloading the page. For example, social media websites use Ajax so that users can post new messages without leaving the page.
+            Animation of page elements, such as fading them in and out, resizing, and moving them.
+            Interactive content, such as games and video.
+            Validating input values of a web form to make sure that they are acceptable before being submitted to the server.
+            Transmitting information about the user's behavior for analytics, ad tracking, and personalization.
+            Libraries and frameworks
+            The majority of websites use a third-party JavaScript library or web application framework as part of their client-side page scripting.[28]
+            
+            jQuery is the most popular library, used by over 70% of websites.[28]
+            
+            The Angular framework was created by Google for its web services; it is now open source and used by other websites. Likewise, Facebook created the React framework for its website and later released it as open source; other sites, including Twitter, now use it. There are other open source frameworks in use, such as Backbone.js and Vue.js.[28]
+            
+            In contrast, the term "Vanilla JS" has been coined for websites not using any libraries or frameworks, instead relying entirely on standard JavaScript functionality.[29]
+            
+            Other usage
+            The use of JavaScript has expanded beyond its web browser roots. JavaScript engines are now embedded in a variety of other software systems, both for server-side website deployments and non-browser applications.
+            
+            Initial attempts at promoting server-side JavaScript usage were Netscape Enterprise Server and Microsoft's Internet Information Services,[30][31] but they were small niches.[32] Server-side usage eventually started to grow in the late-2000s, with the creation of Node.js and other approaches.[32]
+            
+            Electron, Cordova, and other software frameworks have been used to create many applications with behavior implemented in JavaScript. Other non-browser applications include Adobe Acrobat support for scripting PDF documents[33] and GNOME Shell extensions written in JavaScript.[34]
+            
+            JavaScript has recently begun to appear in some embedded systems, usually by leveraging Node.js.[35][36][37]
+            
+            Features
+            The following features are common to all conforming ECMAScript implementations, unless explicitly specified otherwise.
+            
+            Imperative and structured
+            JavaScript supports much of the structured programming syntax from C (e.g., if statements, while loops, switch statements, do while loops, etc.). One partial exception is scoping: JavaScript originally had only function scoping with var. ECMAScript 2015 added keywords let and const for block scoping, meaning JavaScript now has both function and block scoping. Like C, JavaScript makes a distinction between expressions and statements. One syntactic difference from C is automatic semicolon insertion, which allows the semicolons that would normally terminate statements to be omitted.[38]
+            
+            Weakly typed
+            JavaScript is weakly typed, which means certain types are implicitly cast depending on the operation used.[39]
+            
+            The binary + operator casts both operands to a string unless both operands are numbers. This is because the addition operator doubles as a concatenation operator
+            The binary - operator always casts both operands to a number
+            Both unary operators (+, -) always cast the operand to a number
+            Values are casted to strings like the following[39]:
+            
+            Strings are left as-is
+            Numbers are converted to their string representation
+            Arrays have their elements cast to strings after which they are joined by commas (,)
+            Other objects are converted to the string [object Object] where Object is the name of the constructor of the object
+            Values are casted to numbers by casting to strings and then casting the strings to numbers. These processes can be modified by defining toString and valueOf functions on the prototype for string and number casting respectively.
+            
+            JavaScript has received criticism for the way it implements these conversions as the complexity of the rules can be mistaken for inconsistency[40][39]. For example, when adding a number to a string, the number will be cast to a string before performing concatenation, but when subtracting a number from a string, the string is cast to a number before performing subtraction.
+
+            <div id="box"></div>
+
+    </div>
+        
+    <script>
+        const container = document.getElementById('container')
+        const target = document.getElementById('box')
+        let observer = new IntersectionObserver(callback, {threshold: 0.2, root: container, rootMargin: "50px"});
+        observer.observe(target);
+
+        //to unobserve a particular observer
+        // observer.unobserve(target);
+
+        // to unobserve all observer
+        // observer.disconnect() 
+
+        function callback(entries) {
+            console.log(entries)
+        }
+    </script>    
+</body>
+</html>
