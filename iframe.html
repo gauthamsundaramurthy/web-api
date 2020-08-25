@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="list">
+
+    </ul>
+    <script>
+        window.addEventListener('message', initPort)
+        
+        // Setup the transferred port
+        function initPort(e) {
+            port2 = e.ports[0];
+            port2.onmessage = onMessage;
+        }
+
+        // Handle messages received on port2
+        function onMessage(e) {
+            var listItem = document.createElement('li');
+            listItem.textContent = e.data;
+            list.appendChild(listItem);
+            port2.postMessage('Message received by IFrame: "' + e.data + '"');
+        }
+    </script>
+    
+</body>
+</html>

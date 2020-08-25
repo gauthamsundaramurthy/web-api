@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 300px;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h2> Channel Messaging Demo </h2>
+        Message: <input type="text"/> 
+        <button> Send </button>
+        <span></span>
+    </div>
+
+    <iframe src="iframe.html" width="100%" height="300"></iframe>
+    
+    <script>
+        const channel = new MessageChannel()
+        const port1 = channel.port1
+        const iframe = document.querySelector('iframe')
+        iframe.addEventListener('load', ()=> {
+            iframe.contentWindow.postMessage('init', '*', [channel.port2]);
+            
+            const btn = document.querySelector('button')
+            btn.addEventListener('click', sendMessage)
+            function sendMessage () {
+                const input = document.querySelector('input')
+                port1.postMessage(input.value)
+                input.value=''
+            }
+            
+            port1.onmessage = event => {
+                const display = document.querySelector('span')
+                display.innerHTML = event.data
+
+            }
+        }, false)
+
+        
+
+        
+        
+    </script>
+</body>
+</html>
